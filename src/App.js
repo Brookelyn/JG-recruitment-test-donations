@@ -1,18 +1,63 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './css/app.css';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      charityId: '183560'
+    }
+  }
+
+  componentWillMount() {
+    const appId = '3c847946';
+    const options = { headers: {"Content-Type": "application/json"} };
+
+    fetch(`https://api.justgiving.com/${appId}/v1/charity/${this.state.charityId}`, options)
+    .then((res) => {
+      if (res.status !== 200) {
+        console.log('Oops! Looks like there\'s something wrong. Error code: ' +  
+          res.status);  
+        return;  
+      }
+      return res.json();
+    }).then((res) => {
+      this.setState({
+        charity: res
+      });
+    }).catch((error) => {
+      this.setState({
+        error: true
+      });
+    });
+
+    fetch(`https://api.justgiving.com/${appId}/v1/charity/${this.state.charityId}/donations`, options)
+    .then((res) => {
+      if (res.status !== 200) {
+        console.log('Oops! Looks like there\'s something wrong. Error code: ' +  
+          res.status);  
+        return;  
+      }
+      return res.json();
+    }).then((res) => {
+      this.setState({
+        donations: res
+      });
+    }).catch((error) => {
+      this.setState({
+        loading: false
+      });
+    });
+  }
+
+
   render() {
+
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        {this.state.charity && this.state.donations &&
+          <h1>All data arrived</h1>
+        }
       </div>
     );
   }
