@@ -5,14 +5,16 @@ import Donation from './Donation';
 
 class Donations extends Component {
   render() {
-    console.log(this.props)
     return (
       <section className="donations">
-        {this.props.donations.map((donation, i) => {
-          return (
-            <Donation key={i} {...donation} />
-          );
-        })}
+        <h2>The latest donations</h2>
+        <div className="donations-list">
+          {this.props.donations.map((donation, i) => {
+            return (
+              <Donation key={i} {...donation} />
+            );
+          })}
+        </div>
       </section>
     );
   }

@@ -3,6 +3,8 @@ import './css/app.css';
 
 import Charity from './components/Charity';
 import Donations from './components/Donations';
+import Footer from './components/Footer';
+
 
 class App extends Component {
   constructor(props) {
@@ -64,6 +66,8 @@ class App extends Component {
             <Donations {...this.state.donations} />
           </div>
         }
+
+        <Footer />
       </div>
     );
   }

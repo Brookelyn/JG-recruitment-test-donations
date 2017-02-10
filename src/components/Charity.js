@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class Charity extends Component {
 
   render() {
-    // console.log(this.props)
+    console.log(this.props)
     return (
       <header>
         <div className="header-wrapper">
@@ -12,6 +12,7 @@ class Charity extends Component {
           </figure>
           <a href={this.props.profilePageUrl}>
             <h1 className="charity-name">{this.props.name}</h1>
+            <p>{this.props.description}</p>
           </a>
         </div>
       </header>
