@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import './css/app.css';
 
+import Charity from './components/Charity';
+import Donations from './components/Donations';
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -56,7 +59,13 @@ class App extends Component {
     return (
       <div className="App">
         {this.state.charity && this.state.donations &&
-          <h1>All data arrived</h1>
+          <div>
+              <Charity {...this.state.charity} />
+            <section className="content">
+              <Donations {...this.state.donations} />
+              
+            </section>
+          </div>
         }
       </div>
     );

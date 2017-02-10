@@ -1,0 +1,33 @@
+html, body {
+  font-family: 'Open Sans', sans-serif;
+  color: #000;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Droid Sans', sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+header {
+  border-bottom: 1px solid #e6e6e6;
+}
+
+header .header-wrapper {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+header .header-wrapper .img-wrapper {
+  max-width: 30%;
+}
+
+header .header-wrapper .img-wrapper img {
+  max-width: 100%;
+  max-height: 200px;
+}
