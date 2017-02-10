@@ -1,12 +1,19 @@
 import React, { Component } from 'react';
 
-import {Donation} from './Donation';
+import Donation from './Donation';
 
 
 class Donations extends Component {
   render() {
+    console.log(this.props)
     return (
-        <h1>Donations</h1>
+      <section className="donations">
+        {this.props.donations.map((donation, i) => {
+          return (
+            <Donation key={i} {...donation} />
+          );
+        })}
+      </section>
     );
   }
 }

@@ -60,11 +60,8 @@ class App extends Component {
       <div className="App">
         {this.state.charity && this.state.donations &&
           <div>
-              <Charity {...this.state.charity} />
-            <section className="content">
-              <Donations {...this.state.donations} />
-              
-            </section>
+            <Charity {...this.state.charity} />
+            <Donations {...this.state.donations} />
           </div>
         }
       </div>
