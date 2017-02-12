@@ -17,6 +17,15 @@ a::visited {
   color: #000;
 }
 
+.content.d-o0-to-o100 {
+  opacity: 0;
+  transition: opacity 0.25s ease-in-out;
+}
+
+.content.d-o0-to-o100._show {
+  opacity: 1;
+}
+
 header {
   border-bottom: 1px solid #f1efef;
   background-color: #FFF;
@@ -104,14 +113,17 @@ footer {
   left: 0;
   width: 100%;
   background-color: #FFF;
+  padding: 1rem 0;
 }
 
 footer .footer-link .img-wrapper {
   height: 50px;
-  width: 50px;
+  max-width: 100px;
 }
 
 footer .footer-link .img-wrapper img {
-  width: 50px;
-  height: auto;
+  max-width: auto;
+  max-height: 100%;/*
+  width: auto;
+  height: auto;*/
 }

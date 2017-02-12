@@ -17,11 +17,15 @@ class App extends Component {
     this.updateView = this.updateView.bind(this);
   }
 
-  componentWillMount() {
+  loadCharityData(charityId) {
     const appId = '3c847946';
     const options = { headers: {"Content-Type": "application/json"} };
 
-    fetch(`https://api.justgiving.com/${appId}/v1/charity/${this.state.charityId}`, options)
+    this.setState({
+      isCharityDataLoading: true
+    });
+
+    fetch(`https://api.justgiving.com/${appId}/v1/charity/${charityId}`, options)
     .then((res) => {
       if (res.status !== 200) {
         console.log('Oops! Looks like there\'s something wrong. Error code: ' +  
@@ -31,15 +35,26 @@ class App extends Component {
       return res.json();
     }).then((res) => {
       this.setState({
-        charity: res
+        charity: res,
+        isCharityDataLoading: false
       });
     }).catch((error) => {
+      console.log('There has been an error');
       this.setState({
         error: true
       });
     });
+  }
 
-    fetch(`https://api.justgiving.com/${appId}/v1/charity/${this.state.charityId}/donations`, options)
+  loadDonationData(charityId) {
+    const appId = '3c847946';
+    const options = { headers: {"Content-Type": "application/json"} };
+
+    this.setState({
+      isDonationDataLoading: true
+    });
+
+    fetch(`https://api.justgiving.com/${appId}/v1/charity/${charityId}/donations`, options)
     .then((res) => {
       if (res.status !== 200) {
         console.log('Oops! Looks like there\'s something wrong. Error code: ' +  
@@ -49,33 +64,52 @@ class App extends Component {
       return res.json();
     }).then((res) => {
       this.setState({
-        donations: res
+        donations: res,
+        isDonationDataLoading: true
       });
     }).catch((error) => {
+      console.log('There has been an error');
       this.setState({
-        loading: false
+        isDonationDataLoading: false
       });
     });
   }
 
-  componentWillReceiveProps() {
-
+  componentWillMount() {
+    this.loadCharityData(this.state.charityId);
+    this.loadDonationData(this.state.charityId);
   }
 
+  // shouldComponentUpdate(nextState) {
+  //   if (nextState !== this.state) {
+
+  //     return true;
+  //   }
+  //   return false;
+  // }
+
+  // componentWillReceiveProps(nextState) {
+  //   if (nextState !== this.state) {
+  //     console.log('update');
+  //   }
+  // }
+
+
   updateView(input) {
-    // console.log(input);
     this.setState({
       charityId: input
     });
+    this.loadCharityData(input);
+    this.loadDonationData(input);
   }
 
 
   render() {
-    console.log(this.state.charityId);
+    // console.log(this.state.charityId);
     return (
       <div className="App">
         {this.state.charity && this.state.donations &&
-          <div>
+          <div className={`content d-o0-to-o100 ${this.state.isCharityDataLoading && this.state.isDonationDataLoading ? '' : '_show'}`}>
             <Charity {...this.state.charity} />
             <Donations {...this.state.donations} />
           </div>
