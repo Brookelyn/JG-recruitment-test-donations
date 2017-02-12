@@ -11,7 +11,7 @@ class App extends Component {
     super(props);
 
     this.state = {
-      charityId: '18570'
+      charityId: '183560'
     }
 
     this.updateView = this.updateView.bind(this);
@@ -80,20 +80,6 @@ class App extends Component {
     this.loadDonationData(this.state.charityId);
   }
 
-  // shouldComponentUpdate(nextState) {
-  //   if (nextState !== this.state) {
-
-  //     return true;
-  //   }
-  //   return false;
-  // }
-
-  // componentWillReceiveProps(nextState) {
-  //   if (nextState !== this.state) {
-  //     console.log('update');
-  //   }
-  // }
-
 
   updateView(input) {
     this.setState({
@@ -105,7 +91,6 @@ class App extends Component {
 
 
   render() {
-    // console.log(this.state.charityId);
     return (
       <div className="App">
         {this.state.charity && this.state.donations &&

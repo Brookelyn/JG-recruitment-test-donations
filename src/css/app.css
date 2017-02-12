@@ -33,22 +33,28 @@ header {
 
 header .header-wrapper {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   max-width: 800px;
   margin: 0 auto;
 }
 
 header .header-wrapper .img-wrapper {
-  width: 30%;
+  height: 75px;
+  max-width: 150px;
+  margin: 1rem;
+  flex: 1;
 }
 
 header .header-wrapper .img-wrapper img {
-  max-width: 100%;
-  max-height: 200px;
-  min-height: 100px;
-  margin: 1rem;
+  max-width: auto;
+  height: 100%;
 }
+
+header .header-wrapper .charity-details {
+  margin-left: 1.5rem;
+}
+
 
 .donations {
   max-width: 800px;
@@ -73,12 +79,14 @@ header .header-wrapper .img-wrapper img {
   min-width: 300px;
   background-color: #FFF;
   margin: 1rem;
+  height: auto;
 }
 
 .donation .img-wrapper {
-  max-width: 50px;
-  max-height: 50px;
+  width: 50px;
+  height: 50px;
   overflow: hidden;
+  flex-shrink: 0;
 }
 
 .donation figure {
@@ -86,17 +94,13 @@ header .header-wrapper .img-wrapper img {
 }
 
 .donation .img-wrapper img {
-  max-width: 100%;
-  height: auto;
+  width: auto;
+  height: 100%;
   margin: 0;
 }
 
-/*.donor-details {
-  margin: 1rem;
-}*/
-
 .donor-details h3 {
-  line-height: 0.5;
+  margin-top: 12px;
 }
 
 .donation-amount {
@@ -114,16 +118,17 @@ footer {
   width: 100%;
   background-color: #FFF;
   padding: 1rem 0;
+  border-top: 1px solid #f1efef;
+  flex-wrap: wrap;
 }
 
 footer .footer-link .img-wrapper {
   height: 50px;
   max-width: 100px;
+  cursor: pointer;
 }
 
 footer .footer-link .img-wrapper img {
   max-width: auto;
-  max-height: 100%;/*
-  width: auto;
-  height: auto;*/
+  max-height: 100%;
 }
