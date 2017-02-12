@@ -99,6 +99,10 @@ header .header-wrapper .charity-details {
   margin: 0;
 }
 
+.donor-details {
+  margin-right: 0.5em;
+}
+
 .donor-details h3 {
   margin-top: 12px;
 }
