@@ -39,8 +39,12 @@ class Donation extends Component {
       <footer>
         {this.state.charities.map((charity, i) => {
           return (
-            <figure className="footer-link" key={i}>
-              <div className="img-wrapper">
+            <figure 
+              className="footer-link" 
+              key={i}
+              >
+              <div className="img-wrapper"
+                onClick={() => this.props.updateView(charity.id)}>
                 <img src={charity.logo} alt={charity.id} />
               </div>
             </figure>

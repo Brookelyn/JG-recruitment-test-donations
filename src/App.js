@@ -9,9 +9,12 @@ import Footer from './components/Footer';
 class App extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
-      charityId: '183560'
+      charityId: '18570'
     }
+
+    this.updateView = this.updateView.bind(this);
   }
 
   componentWillMount() {
@@ -55,9 +58,20 @@ class App extends Component {
     });
   }
 
+  componentWillReceiveProps() {
+
+  }
+
+  updateView(input) {
+    // console.log(input);
+    this.setState({
+      charityId: input
+    });
+  }
+
 
   render() {
-
+    console.log(this.state.charityId);
     return (
       <div className="App">
         {this.state.charity && this.state.donations &&
@@ -67,7 +81,7 @@ class App extends Component {
           </div>
         }
 
-        <Footer />
+        <Footer updateView={this.updateView}/>
       </div>
     );
   }

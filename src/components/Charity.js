@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class Charity extends Component {
 
   render() {
-    console.log(this.props)
+    // console.log(this.props)
     return (
       <header>
         <div className="header-wrapper">
