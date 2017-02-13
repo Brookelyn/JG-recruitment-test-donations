@@ -5,6 +5,8 @@ import Charity from './components/Charity';
 import Donations from './components/Donations';
 import Footer from './components/Footer';
 
+import { getCharityData, getDonationData } from './dataService';
+
 
 class App extends Component {
   constructor(props) {
@@ -25,23 +27,10 @@ class App extends Component {
       isCharityDataLoading: true
     });
 
-    fetch(`https://api.justgiving.com/${appId}/v1/charity/${charityId}`, options)
-    .then((res) => {
-      if (res.status !== 200) {
-        console.log('Oops! Looks like there\'s something wrong. Error code: ' +  
-          res.status);  
-        return;  
-      }
-      return res.json();
-    }).then((res) => {
+    getCharityData(charityId).then(res => {
       this.setState({
         charity: res,
         isCharityDataLoading: false
-      });
-    }).catch((error) => {
-      console.log('There has been an error');
-      this.setState({
-        error: true
       });
     });
   }
@@ -54,23 +43,10 @@ class App extends Component {
       isDonationDataLoading: true
     });
 
-    fetch(`https://api.justgiving.com/${appId}/v1/charity/${charityId}/donations`, options)
-    .then((res) => {
-      if (res.status !== 200) {
-        console.log('Oops! Looks like there\'s something wrong. Error code: ' +  
-          res.status);  
-        return;  
-      }
-      return res.json();
-    }).then((res) => {
+    getDonationData(charityId).then((res) => {
       this.setState({
         donations: res,
         isDonationDataLoading: true
-      });
-    }).catch((error) => {
-      console.log('There has been an error');
-      this.setState({
-        isDonationDataLoading: false
       });
     });
   }
